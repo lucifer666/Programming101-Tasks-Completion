@@ -70,3 +70,8 @@ FROM orders JOIN shippers
 ON orders.ShipVia = shippers.ShipperID;
 
 /*15.List all contries and the total number of orders that are going to be shipped there.*/
+SELECT  orders.ShipCountry, COUNT(orders.ShipCountry) AS NumberOfOrders
+FROM orders
+GROUP BY ShipCountry;
+
+/*16.Find the employee that has served the most orders.*/
