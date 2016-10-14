@@ -39,9 +39,12 @@ SELECT *
 FROM employees
 WHERE ReportsTo IS NULL;
 
-/*9.List all employees by their first and last name, and the first and last name of the employees that they report to./*
+/*9.List all employees by their first and last name, and the first and last name of the employees that they report to.*/
+SELECT employees.FirstName || " " || employees.LastName AS Employee, 
+reportsto.FirstName || " " || reportsto.LastName AS ReportsTo, employees.ReportsTo AS ReportsToID 
+FROM employees LEFT JOIN employees AS reportsto
+ON employees.ReportsTo = reportsto.EmployeeID;
 
-???????????
 
 /*10.Count all female employees.*/
 SELECT COUNT(*)
@@ -75,3 +78,36 @@ FROM orders
 GROUP BY ShipCountry;
 
 /*16.Find the employee that has served the most orders.*/
+SELECT employees.FirstName, employees.LastName, COUNT(orders.OrderID)
+FROM employees 
+INNER JOIN orders
+ON employees.EmployeeID=orders.EmployeeID
+GROUP BY employees.FirstName, employees.LastName
+ORDER BY COUNT(orders.OrderID) DESC 
+LIMIT 1;
+
+/*17.Find the customer that has placed the most orders.*/
+SELECT customers.CustomerID, customers.ContactName, COUNT(orders.OrderID)
+FROM orders
+INNER JOIN customers
+ON orders.CustomerID=customers.CustomerID
+GROUP BY customers.CustomerID
+ORDER BY COUNT(orders.OrderID) DESC
+LIMIT 1;
+
+/*18.List all orders, with the employee serving them and the customer, that has placed them.*/
+SELECT (employees.FirstName || "  " || employees.LastName) AS EmployeeName, orders.CustomerID, orders.OrderID
+FROM employees
+INNER JOIN orders
+ON employees.EmployeeID=orders.EmployeeID;
+
+/*19.List for which customer, which shipper is going to deliver the order.*/
+SELECT shippers.CompanyName AS ShipperCompanyName, customers.CompanyName AS CustomerCompanyName
+FROM shippers
+JOIN customers ON customers.CustomerID IN (
+	SELECT orders.CustomerID
+	FROM orders
+	WHERE orders.shipVia=shippers.ShipperID);
+
+
+
