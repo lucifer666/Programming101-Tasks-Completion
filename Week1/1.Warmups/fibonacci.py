@@ -1,14 +1,21 @@
-#to be implemented
-# def fibonacci(number):
-#     fibonnaci_list = []
-#     fib_number = 1
-#     fibonnaci_list.append(fib_number)
-#     if number == 1:
-#         return fibonnaci_list
-#     while(number != 0):
-#
-#
-# print(fibonacci(1))
-# print(fibonacci(2))
-# # print(fibonacci(3))
-# # print(fibonacci(10))
+def fibonacci(number):
+   seed_val1 = 1
+   seed_val2 = 1
+   fibonacci_list = [seed_val1, seed_val2]
+   if number == 1:
+       return fibonacci_list.pop()
+   elif number == 2:
+       return fibonacci_list
+   number -= 2
+   while(number != 0):
+       seed_val2 += seed_val1
+       seed_val1 = seed_val2 - seed_val1
+       fibonacci_list.append(seed_val2)
+       number -= 1
+   return fibonacci_list
+
+
+print(fibonacci(1))
+print(fibonacci(2))
+print(fibonacci(3))
+print(fibonacci(10))
