@@ -1,12 +1,11 @@
-def next_hack(n):
-    is_hack_number = False
-    n += 1
-    while(is_hack_number == False):
-        if (bin(n)[2:] == bin(n)[2:][::-1]) and (bin(n)[2:].count('1') % 2 != 0):
-            is_hack_number = True
-            return n
-        n += 1
+from palindrome import palindrome
 
+def next_hack(number):
+    number += 1
+    while(True):
+        if palindrome(bin(number)[2:]) and (bin(number)[2:].count('1') % 2 != 0):
+            return number
+        number += 1
 
 print(next_hack(0))
 print(next_hack(10))

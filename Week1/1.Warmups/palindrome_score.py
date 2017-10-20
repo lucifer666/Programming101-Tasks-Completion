@@ -1,14 +1,12 @@
+from palindrome import palindrome
+
 def p_score(number):
     p_score = 1
-    number_str = str(number)
-    is_palindrome = False
-    if number_str != number_str[::-1]:
-        while(is_palindrome != True):
+    if not palindrome(number):
+        while(True):
             number += int(str(number)[::-1])
-            number_str = str(number)
             p_score += 1
-            if number_str == number_str[::-1]:
-                is_palindrome = True
+            if palindrome(number):
                 break
     return p_score
 
