@@ -1,14 +1,16 @@
+#need to be improved
+
 import math
 
 def is_prime(number):
     if number < 2:
         return False
-    divider = abs(number)
+    divider = 2
     max_divider = math.sqrt(number)
     while(divider <= max_divider):
         if number % divider == 0:
             return False
-        divider -= 1
+        divider += 1
     return True
 
 print(is_prime(1))
