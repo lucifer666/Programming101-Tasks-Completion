@@ -1,5 +1,3 @@
-#need to be improved
-
 import math
 
 def is_prime(number):
