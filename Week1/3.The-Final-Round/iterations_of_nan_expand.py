@@ -1,4 +1,5 @@
 #refactoring needed
+
 def iterations_of_nan_expand(expanded):
     if not expanded:
         return 0
