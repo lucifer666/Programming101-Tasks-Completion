@@ -1,4 +1,5 @@
 #refactoring needed
+
 from group import group
 
 def max_consecutive(items):
