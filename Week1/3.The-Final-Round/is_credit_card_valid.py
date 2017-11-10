@@ -1,3 +1,5 @@
+#refactoring needed
+
 def is_credit_card_valid(number):
     digits_list = [int(digit) for digit in str(number)]
     transformed_digits_list = [digit*2 if index % 2 != 0 else digit for index, digit in enumerate(digits_list)]
