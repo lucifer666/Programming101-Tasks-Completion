@@ -1,5 +1,6 @@
 #refactoring needed
 
+
 def magic_square(matrix):
     return rows_sum(matrix) == cols_sum(matrix) == main_diagonal_sum(matrix) == antidiagonal_sum(matrix)
 
