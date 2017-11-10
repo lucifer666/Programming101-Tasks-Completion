@@ -1,4 +1,5 @@
 #refactoring needed
+
 def group(arr):
     consecutive_list = []
     inner_list = []
