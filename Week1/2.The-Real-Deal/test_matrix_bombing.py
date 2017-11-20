@@ -1,6 +1,6 @@
+
 from matrix_bombing import matrix_bombing_plan
 import unittest
-
 class TestMatrix(unittest.TestCase):
 
     def test_matrix_bombing_plan(self):
